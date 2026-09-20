@@ -1,0 +1,107 @@
+.upload-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #02010b;
+  overflow: hidden;
+}
+
+.upload-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-back-button {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.upload-back-button span {
+  display: block;
+  transform: translate(-1px, -4px);
+}
+
+.upload-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.72);
+  transform: translateX(-2px);
+}
+
+.upload-back-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.upload-stage {
+  /* Make the Lanyard stage span the full viewport so physics/drag area
+     matches the visible page. Keep it centered visually via internal
+     centering in the Lanyard wrapper; this removes the invisible
+     interaction rectangle caused by the previous fixed-size stage. */
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Target the lanyard wrapper produced by the component and size the canvas */
+.upload-stage .lanyard-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prism-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.upload-stage .lanyard-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Slight padding on very wide screens so the lanyard sits centrally */
+@media (min-width: 1400px) {
+  .upload-stage {
+    width: 1200px;
+    height: 900px;
+  }
+}
+
+@media (max-width: 800px) {
+  .upload-stage {
+    width: 92vw;
+    height: 72vh;
+  }
+}

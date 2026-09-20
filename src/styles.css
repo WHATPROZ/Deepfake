@@ -1,0 +1,97 @@
+.star-border {
+  position: relative;
+  display: inline-block;
+  padding: 1px;
+  border-radius: 0.75rem;
+  background: transparent;
+  isolation: isolate;
+  overflow: hidden;
+  --star-border-color: #7c31cd;
+  --star-border-speed: 6s;
+  --star-border-thickness: 20px;
+}
+
+.star-border::before,
+.star-border::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--star-border-thickness) * -1);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.star-border::before {
+  padding: var(--star-border-thickness);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 60deg,
+    var(--star-border-color) 120deg,
+    transparent 180deg,
+    transparent 240deg,
+    var(--star-border-color) 300deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: star-border-spin var(--star-border-speed) linear infinite;
+  filter: blur(26px);
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+
+.star-border::after {
+  inset: 0;
+  border: var(--star-border-thickness) solid transparent;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 60deg,
+    var(--star-border-color) 120deg,
+    transparent 180deg,
+    transparent 240deg,
+    var(--star-border-color) 300deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: star-border-spin var(--star-border-speed) linear infinite;
+  opacity: 0.9;
+  filter: blur(0.55px);
+}
+
+.star-border__inner {
+  position: relative;
+  display: block;
+  border-radius: 0.75rem;
+  background: transparent;
+  padding: 1rem 2.5rem;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes star-border-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

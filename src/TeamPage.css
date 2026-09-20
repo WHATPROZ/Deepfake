@@ -1,0 +1,128 @@
+.team-page {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #02010b;
+  color: #ffffff;
+  overflow: hidden;
+  font-family: Inter, Arial, system-ui, sans-serif;
+}
+
+.team-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #02010b;
+  overflow: hidden;
+}
+
+.team-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 72% 12%, rgba(82, 39, 255, 0.14), transparent 32%),
+    linear-gradient(90deg, rgba(2, 1, 11, 0.78), rgba(2, 1, 11, 0.18) 50%, rgba(2, 1, 11, 0.66));
+  pointer-events: none;
+}
+
+.team-back-button {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 30;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.team-back-button span {
+  display: block;
+  transform: translate(-1px, -2px);
+}
+
+.team-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.72);
+  transform: translateX(-2px);
+}
+
+.team-back-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.team-shell {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 24px 48px 72px 104px;
+  box-sizing: border-box;
+}
+
+.team-header p {
+  margin: 10px -15px 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font: 900 24px/1 Inter, Arial, system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.team-gallery-stage {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: min(860px, calc(100vw - 128px));
+  height: min(430px, calc(100vh - 150px));
+  transform: translate(-50%, -50%);
+}
+
+.team-gallery-stage .accordion-gallery {
+  height: 100%;
+}
+
+.team-gallery-stage .ag-panel__overlay {
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.64) 100%);
+}
+
+.team-gallery-stage .ag-panel,
+.team-gallery-stage .ag-panel__frame,
+.team-gallery-stage .ag-panel__media,
+.team-gallery-stage .ag-panel__media img {
+  border-radius: 28px;
+}
+
+.team-gallery-stage .ag-panel__media img {
+  object-position: center;
+}
+
+@media (max-width: 700px) {
+  .team-shell {
+    padding: 26px 16px 56px 86px;
+  }
+
+  .team-header p {
+    font-size: 20px;
+  }
+
+  .team-gallery-stage {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin-top: 34px;
+    transform: none;
+  }
+
+}
